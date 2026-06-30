@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tower Defense</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="ui">
+    <div class="stat">❤️ <span id="lives">3</span></div>
+    <div class="stat">💰 <span id="gold">250</span></div>
+    <div class="stat">🌊 <span id="waveNum">0</span></div>
+    <div class="stat">🏆 <span id="score">0</span></div>
+    <div class="stat">🪙 <span id="fichas">0</span></div>
+
+    <button id="roleta-btn" class="tower-btn" style="border-color:#a855f7;color:#a855f7;opacity:0.4;cursor:not-allowed;pointer-events:none" onclick="openRoleta()">
+      🎲 Roleta <span class="tower-count" id="cnt-fichas">(0/10)</span>
+    </button>
+
+    <button class="tower-btn" id="btn-basic"  style="color:#60a5fa;border-color:#60a5fa;opacity:1"   onclick="selectTower('basic')">🔵 Básica $100 <span class="tower-count" id="cnt-basic">(0/3)</span></button>
+    <button class="tower-btn" id="btn-sniper" style="color:#a78bfa;border-color:#a78bfa;opacity:0.5" onclick="selectTower('sniper')">🟣 Sniper $200 <span class="tower-count" id="cnt-sniper">(0/3)</span></button>
+    <button class="tower-btn" id="btn-slow"   style="color:#34d399;border-color:#34d399;opacity:0.5" onclick="selectTower('slow')">🟢 Lenta $150 <span class="tower-count" id="cnt-slow">(0/3)</span></button>
+    <button class="tower-btn" id="btn-aoe"    style="color:#fb923c;border-color:#fb923c;opacity:0.5" onclick="selectTower('aoe')">🟠 AoE $250 <span class="tower-count" id="cnt-aoe">(0/3)</span></button>
+
+    <button id="wave-btn" onclick="startWave()">▶ Iniciar Onda</button>
+  </div>
+
+  <div id="wrap">
+    <canvas id="c"></canvas>
+    <div id="tooltip"></div>
+
+    <div id="roleta-overlay">
+      <h3 id="roleta-title">🎲 Roleta</h3>
+      <div id="roleta-spin">🎰</div>
+      <p id="roleta-result">Você precisa de 10 fichas! Complete ondas para ganhar (1 ficha a cada 10 ondas).</p>
+      <button id="roleta-spin-btn" onclick="spinRoleta()">Girar (10 🪙)</button>
+      <button id="roleta-close-btn" onclick="closeRoleta()">Fechar</button>
+    </div>
+
+    <div id="msg">
+      <h2 id="msg-title">Game Over</h2>
+      <p id="msg-sub"></p>
+      <button onclick="restartGame()">Jogar Novamente</button>
+    </div>
+
+    <div id="start-menu">
+      <div class="panel">
+        <h1>🏰 Tower Defense</h1>
+        <p>
+          🔵🟣🟢🟠 Construa torres ao redor do caminho para impedir que os inimigos cheguem ao forte.<br><br>
+          💰 Ganhe ouro derrotando inimigos.<br>
+          🪙 A cada <b>10 ondas completas</b>, você ganha <b>1 ficha</b>.<br>
+          🎲 Junte <b>10 fichas</b> para girar a roleta de prêmios!
+        </p>
+        <button id="start-btn" onclick="startGame()">▶ Começar Jogo</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
